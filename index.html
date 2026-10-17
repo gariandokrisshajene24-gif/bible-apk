@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#173d35">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="WordPath">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/wordpath-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="icons/wordpath-180.png">
+    <meta name="description" content="WordPath is a peaceful Bible reading, reflection, and prayer companion.">
+
+    <title>WordPath — Bible Reader</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="topbar">
+
+        <a class="brand" href="#home">
+            <span class="brand-mark">✦</span>
+
+            <span>
+                WordPath
+                <small>READ • REFLECT • GROW</small>
+            </span>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <button class="nav-link active" data-view="reader">
+                Bible Reader
+            </button>
+
+            <button class="nav-link" data-view="daily">
+                Verse of the Day
+            </button>
+
+            <button class="nav-link" data-view="saved">
+                Bookmarks
+                <span id="bookmark-count" class="count">0</span>
+            </button>
+
+            <button class="nav-link" data-view="plans">Reading Plans</button>
+            <button class="nav-link" data-view="quiz">Bible Quiz</button>
+            <button class="nav-link" data-view="journal">Prayer Journal</button>
+            <button class="nav-link" data-view="saints">Saints</button>
+        </nav>
+
+        <!-- Dark Mode -->
+        <button
+            id="theme-toggle"
+            class="icon-btn"
+            aria-label="Toggle dark mode"
+            type="button"
+        >
+            ◐
+        </button>
+        <button id="install-app" class="secondary-btn install-app-btn" type="button" aria-label="Install WordPath app">
+            Install app
+        </button>
+
+    </header>
+
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section class="hero" id="home">
+
+            <div class="hero-copy">
+                <p class="eyebrow">YOUR DAILY SPACE IN SCRIPTURE</p>
+
+                <h1>
+                    Make room for<br>
+                    <em>the Word.</em>
+                </h1>
+
+                <p>
+                    Explore every book and chapter of the Bible, save
+                    meaningful verses, and build a reading rhythm that
+                    fits your life.
+                </p>
+
+                <button id="start-reading" class="primary-btn">
+                    Open the Bible <span>↗</span>
+                </button>
+            </div>
+
+            <!-- Bible photography and decorative overlay -->
+            <div class="hero-art hero-photo" aria-label="Open Bible in warm natural light" role="img">
+
+                <div class="photo-overlay"></div>
+                <div class="hero-photo-caption">
+                    <span class="photo-caption-icon">✦</span>
+                    <span>Be still. Be present. Be renewed.</span>
+                </div>
+
+                <span class="art-spark spark-one">✦</span>
+                <span class="art-spark spark-two">✧</span>
+
+                <div class="art-label">
+                    “Your word is a lamp<br>
+                    to my feet.”
+
+                    <small>PSALM 119:105</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== BIBLE READER ==================== -->
+        <section class="reader-layout" id="reader-section">
+
+            <!-- Bible Selection Sidebar -->
+            <aside class="sidebar panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <p class="eyebrow">SCRIPTURE LIBRARY</p>
+                        <h2>Find a passage</h2>
+                    </div>
+
+                    <span class="book-icon">▤</span>
+
+                </div>
+
+                <!-- Book Selection -->
+                <label for="book-select">Book of the Bible</label>
+                <select id="book-select"></select>
+
+                <!-- Chapter and Translation -->
+                <div class="select-row">
+
+                    <div>
+                        <label for="chapter-select">Chapter</label>
+                        <select id="chapter-select"></select>
+                    </div>
+
+                    <div>
+                        <label for="version-select">Translation</label>
+
+                        <select id="version-select">
+                            <option value="kjv">KJV</option>
+                            <option value="web">WEB</option>
+                            <option value="asv">ASV</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button id="load-chapter" class="primary-btn full">
+                    Read chapter <span>→</span>
+                </button>
+
+
+                <div class="side-divider"></div>
+
+                <!-- Search a Bible Reference -->
+                <label for="reference-search">Jump to a verse</label>
+
+                <form id="reference-form" class="search-box">
+                    <span>⌕</span>
+
+                    <input
+                        id="reference-search"
+                        placeholder="e.g. John 3:16"
+                        autocomplete="off"
+                    >
+
+                    <button aria-label="Search reference">→</button>
+                </form>
+
+                <p class="hint">
+                    Try Genesis 1, Psalm 23, or John 3:16.
+                </p>
+
+                <!-- Bible Statistics -->
+                <div class="library-stat">
+
+                    <div>
+                        <strong>66</strong>
+                        <span>Books</span>
+                    </div>
+
+                    <div>
+                        <strong>1,189</strong>
+                        <span>Chapters</span>
+                    </div>
+
+                    <div>
+                        <strong>2</strong>
+                        <span>Testaments</span>
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- Bible Reading Area -->
+            <section class="reading-area panel" aria-live="polite">
+
+                <div class="reading-top">
+
+                    <div>
+                        <p class="eyebrow" id="testament-label">
+                            OLD TESTAMENT
+                        </p>
+
+                        <h2 id="passage-title">Genesis 1</h2>
+
+                        <p class="translation-line" id="translation-line">
+                            King James Version · Chapter 1
+                        </p>
+                    </div>
+
+                    <button
+                        id="chapter-bookmark"
+                        class="icon-btn bookmark-chapter"
+                        title="Bookmark this chapter"
+                    >
+                        ☆
+                    </button>
+
+                </div>
+
+                <!-- Reader Tools -->
+                <div class="reader-tools">
+
+                    <div class="search-box verse-filter">
+                        <span>⌕</span>
+
+                        <input
+                            id="verse-filter"
+                            placeholder="Find a word in this chapter…"
+                        >
+
+                        <button id="clear-filter" aria-label="Clear search">
+                            ×
+                        </button>
+                    </div>
+
+                    <div class="reader-actions">
+                        <button id="font-down" class="small-icon"
+                            aria-label="Decrease text size">
+                            A−
+                        </button>
+
+                        <button id="font-up" class="small-icon"
+                            aria-label="Increase text size">
+                            A+
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Loading Status -->
+                <div id="reader-status" class="status-line">
+                    Loading Scripture…
+                </div>
+
+                <!-- Bible Verses -->
+                <article id="verses" class="verses">
+
+                    <div class="loading-card">
+                        <span class="loader"></span>
+
+                        <p>Preparing your reading space…</p>
+                    </div>
+
+                </article>
+
+                <!-- Chapter Navigation -->
+                <div class="chapter-navigation">
+
+                    <button id="previous-chapter" class="secondary-btn">
+                        ← Previous
+                    </button>
+
+                    <span id="chapter-position">
+                        Genesis · 1
+                    </span>
+
+                    <button id="next-chapter" class="secondary-btn">
+                        Next →
+                    </button>
+
+                </div>
+
+                <p class="copyright-note" id="copyright-note">
+                    Scripture text is provided by an external Bible API.
+                </p>
+
+            </section>
+
+        </section>
+
+
+        <!-- ==================== VERSE OF THE DAY ==================== -->
+        <section id="daily-section" class="content-section panel hidden">
+
+            <div class="section-intro">
+                <p class="eyebrow">A MOMENT OF STILLNESS</p>
+
+                <h2>Verse of the day</h2>
+
+                <p>A small passage to carry with you today.</p>
+            </div>
+
+            <div class="daily-card">
+
+                <div class="daily-symbol">✦</div>
+
+                <p class="eyebrow">TODAY'S SCRIPTURE</p>
+
+                <blockquote id="daily-text">
+                    Loading today’s verse…
+                </blockquote>
+
+                <p id="daily-reference" class="daily-reference">
+                    Psalm 119:105 · KJV
+                </p>
+
+                <div class="daily-actions">
+
+                    <button id="daily-read" class="primary-btn">
+                        Read this chapter <span>→</span>
+                    </button>
+
+                    <button id="daily-save" class="secondary-btn">
+                        ☆ Save verse
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== BOOKMARKS ==================== -->
+        <section id="saved-section" class="content-section panel hidden">
+
+            <div class="section-intro">
+                <p class="eyebrow">KEEP WHAT SPEAKS TO YOU</p>
+
+                <h2>Your bookmarks</h2>
+
+                <p>
+                    Verses you save on this device will appear here.
+                </p>
+            </div>
+
+            <div id="saved-list" class="saved-list"></div>
+
+        </section>
+
+
+        <!-- ==================== READING PLANS ==================== -->
+        <section id="plans-section" class="content-section panel hidden">
+
+            <div class="section-intro">
+                <p class="eyebrow">ONE DAY AT A TIME</p>
+
+                <h2>Reading plans</h2>
+
+                <p>
+                    Choose a simple path to build a steady habit.
+                </p>
+            </div>
+
+            <div class="plan-grid">
+
+                <!-- Plan 1 -->
+                <article class="plan-card">
+
+                    <div class="plan-number">01</div>
+
+                    <p class="eyebrow">7 DAYS</p>
+
+                    <h3>Peace for the Week</h3>
+
+                    <p>
+                        Short readings about rest, courage, and trusting
+                        God in everyday life.
+                    </p>
+
+                    <div class="plan-meta">
+                        7 readings · Beginner friendly
+                    </div>
+
+                    <button class="secondary-btn plan-start"
+                        data-plan="peace">
+                        Start plan →
+                    </button>
+
+                </article>
+
+
+                <!-- Plan 2 -->
+                <article class="plan-card">
+
+                    <div class="plan-number">02</div>
+
+                    <p class="eyebrow">14 DAYS</p>
+
+                    <h3>Meet Jesus</h3>
+
+                    <p>
+                        Explore selected chapters from the Gospels and
+                        reflect on Jesus' life and teachings.
+                    </p>
+
+                    <div class="plan-meta">
+                        14 readings · Gospel focus
+                    </div>
+
+                    <button class="secondary-btn plan-start"
+                        data-plan="jesus">
+                        Start plan →
+                    </button>
+
+                </article>
+
+
+                <!-- Plan 3 -->
+                <article class="plan-card">
+
+                    <div class="plan-number">03</div>
+
+                    <p class="eyebrow">30 DAYS</p>
+
+                    <h3>Start with Scripture</h3>
+
+                    <p>
+                        A month of foundational passages to help you
+                        begin or restart your Bible habit.
+                    </p>
+
+                    <div class="plan-meta">
+                        30 readings · Daily practice
+                    </div>
+
+                    <button class="secondary-btn plan-start"
+                        data-plan="foundations">
+                        Start plan →
+                    </button>
+
+                </article>
+
+            </div>
+
+            <!-- Reading Plan Progress -->
+            <div id="plan-progress" class="plan-progress hidden"></div>
+
+        </section>
+
+
+        <!-- ==================== BIBLE QUIZ ==================== -->
+        <section id="quiz-section" class="content-section panel hidden">
+            <div class="section-intro">
+                <p class="eyebrow">LEARN • REMEMBER • GROW</p>
+                <h2>Bible knowledge quiz</h2>
+                <p>Test what you know with a quick round of Scripture-inspired questions.</p>
+            </div>
+            <div class="quiz-card">
+                <div class="quiz-topline"><span id="quiz-progress">QUESTION 1 OF 8</span><span id="quiz-score">Score: 0</span></div>
+                <div class="quiz-progress-track"><span id="quiz-progress-fill"></span></div>
+                <h3 id="quiz-question">Ready to test your Bible knowledge?</h3>
+                <div id="quiz-options" class="quiz-options"></div>
+                <p id="quiz-feedback" class="quiz-feedback" aria-live="polite">Choose an answer to continue.</p>
+                <div class="quiz-actions"><button id="quiz-next" class="primary-btn" type="button" disabled>Next question →</button><button id="quiz-restart" class="secondary-btn" type="button">Restart quiz</button></div>
+            </div>
+            <p class="quiz-disclaimer">A learning activity for reflection. Answers are based on commonly known Bible narratives.</p>
+        </section>
+
+        <!-- ==================== PRAYER JOURNAL ==================== -->
+        <section id="journal-section" class="content-section panel hidden">
+            <div class="section-intro">
+                <p class="eyebrow">A QUIET PLACE TO BE HONEST</p>
+                <h2>Prayer journal</h2>
+                <p>Write your prayers, reflections, and gratitude. Entries stay in this browser on this device.</p>
+            </div>
+            <div class="journal-layout">
+                <form id="journal-form" class="journal-form">
+                    <label for="journal-title">Entry title</label>
+                    <input id="journal-title" maxlength="90" placeholder="e.g. A prayer for courage" required>
+                    <label for="journal-mood">How are you feeling today?</label>
+                    <select id="journal-mood">
+                        <option>Grateful</option><option>Hopeful</option><option>Peaceful</option>
+                        <option>Worried</option><option>Sad</option><option>Seeking guidance</option>
+                    </select>
+                    <label for="journal-entry">Your prayer or reflection</label>
+                    <textarea id="journal-entry" rows="7" maxlength="5000" placeholder="Write freely. This is your private space..." required></textarea>
+                    <label for="journal-verse">Related Bible reference (optional)</label>
+                    <input id="journal-verse" placeholder="e.g. Philippians 4:6">
+                    <button class="primary-btn full" type="submit">Save journal entry <span>↗</span></button>
+                </form>
+                <aside class="journal-side">
+                    <div class="journal-quote">
+                        <span>✦</span>
+                        <p>“Cast all your anxiety on him because he cares for you.”</p>
+                        <small>1 PETER 5:7 · WEB</small>
+                    </div>
+                    <div class="journal-list-wrap">
+                        <div class="journal-list-heading"><h3>Past reflections</h3><span id="journal-count">0 entries</span></div>
+                        <div id="journal-list" class="journal-list"></div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ==================== SAINTS LIBRARY ==================== -->
+        <section id="saints-section" class="content-section panel hidden">
+            <div class="section-intro"><p class="eyebrow">FAITH • WITNESS • INSPIRATION</p><h2>Saints & holy lives</h2><p>Discover a selection of well-known saints and short reflections on the virtues associated with their lives.</p></div>
+            <div class="saints-tools"><input id="saint-search" type="search" placeholder="Search saints, virtues, or patronage…" aria-label="Search saints"><select id="saint-filter" aria-label="Filter saints"><option value="all">All saints</option><option value="apostle">Apostles</option><option value="charity">Charity & service</option><option value="prayer">Prayer & wisdom</option><option value="courage">Courage & faith</option></select></div>
+            <div id="saints-grid" class="saints-grid"></div>
+            <p class="saint-note">This is an introductory selection, not a complete calendar. Feast days and patronages can vary by tradition; consult your church or a trusted Catholic reference for liturgical details.</p>
+        </section>
+
+        <!-- ==================== CLOSING VERSE ==================== -->
+        <section class="closing-note">
+
+            <span>✦</span>
+
+            <p>
+                “Be still, and know that I am God.”
+                <small>PSALM 46:10</small>
+            </p>
+
+            <span>✦</span>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+
+        <a class="brand footer-brand" href="#home">
+
+            <span class="brand-mark">✦</span>
+
+            <span>
+                WordPath
+                <small>READ • REFLECT • GROW</small>
+            </span>
+
+        </a>
+
+        <p>A quiet place to return to Scripture.</p>
+
+        <span>© 2026 WordPath · Krisshajene M. Gariando & Ian Alfred B. Pore</span>
+
+    </footer>
+
+
+    <!-- ==================== NOTIFICATION ==================== -->
+    <div id="toast" class="toast" role="status"></div>
+    
+
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+
+</body>
+</html>
+```

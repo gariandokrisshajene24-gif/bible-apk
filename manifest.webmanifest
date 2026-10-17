@@ -1,0 +1,39 @@
+{
+  "id": "./",
+  "name": "WordPath",
+  "short_name": "WordPath",
+  "description": "WordPath \u2014 Bible reading, reflection, prayer, and daily growth.",
+  "lang": "en",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f4ed",
+  "theme_color": "#173d35",
+  "categories": [
+    "books",
+    "education",
+    "lifestyle"
+  ],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icons/wordpath-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/wordpath-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/wordpath-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
