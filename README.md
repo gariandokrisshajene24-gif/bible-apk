@@ -1,1 +1,0 @@
-# bible-apk
